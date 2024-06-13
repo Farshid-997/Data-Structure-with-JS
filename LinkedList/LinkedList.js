@@ -102,14 +102,27 @@ class LinkedList {
         current = current.next;
       }
       previous.next = current.next;
-      
     }
     this.size--;
   }
 
   // merge 2 linked list
 
-  
+  mergeList(list) {
+    let current = this.head;
+
+    if (!current) {
+      this.head = list.head;
+      return;
+    }
+    while (current.next) {
+      current = current.next;
+    }
+    // current list link to new list head
+    current.next = list.head;
+    this.size += list.size;
+    console.log(current.data)
+  }
 
   // print the linkedList
 
@@ -126,7 +139,7 @@ class LinkedList {
 const ll = new LinkedList();
 
 // second object for creating another linked list
-const ll1= new LinkedList()
+const ll1 = new LinkedList();
 ll.insertFirst(100);
 
 ll.insertLast(200);
@@ -142,4 +155,6 @@ ll.printList();
 ll1.insertFirst(90000);
 ll1.insertAt(10000, 1);
 ll1.insertLast(50000);
+
+ll.mergeList(ll1)
 ll1.printList();
