@@ -121,7 +121,26 @@ class LinkedList {
     // current list link to new list head
     current.next = list.head;
     this.size += list.size;
-    console.log(current.data)
+  }
+
+  // remove duplicate element both list
+
+  removeDuplicate() {
+    let current = this.head;
+    let runner;
+
+    
+
+    while (current & current.next) {
+      runner = current;
+      if (runner.next.data === current.data) {
+        runner.next = runner.next.next;
+        this.sixe--;
+      } else {
+        runner = runner.next;
+      }
+    }
+    current = current.next;
   }
 
   // print the linkedList
@@ -140,6 +159,12 @@ const ll = new LinkedList();
 
 // second object for creating another linked list
 const ll1 = new LinkedList();
+
+// third object for creating another linked list
+
+const ll3=new LinkedList();
+
+
 ll.insertFirst(100);
 
 ll.insertLast(200);
@@ -149,6 +174,8 @@ ll.insertAt(500, 1);
 ll.getIndexValue(1);
 
 ll.removeAt(1);
+
+console.log("List1:");
 ll.printList();
 
 // insert value into linked list
@@ -156,5 +183,24 @@ ll1.insertFirst(90000);
 ll1.insertAt(10000, 1);
 ll1.insertLast(50000);
 
-ll.mergeList(ll1)
+ll.mergeList(ll1);
+
+console.log("List2:");
 ll1.printList();
+
+
+// insert value into linked list
+ll3.insertFirst(100);
+ll3.insertAt(100, 1);
+ll3.insertLast(500);
+
+console.log("List3:");
+ll3.printList();
+
+// Print merged list
+console.log("Merged List:");
+ll.printList();
+
+// console.log("remove duplicate:");
+// ll3.removeDuplicate()
+// ll3.printList();
